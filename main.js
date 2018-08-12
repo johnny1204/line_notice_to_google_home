@@ -2,6 +2,7 @@ const googlehome = require('google-home-notifier')
 const http = require('http')
 const Client = require('@line/bot-sdk').Client
 const config = require('./config/setting.json')
+const ngrok = require('ngrok')
 
 googlehome.device('Google-Home', 'ja')
 googlehome.ip(config.googlehome_ip)
@@ -30,4 +31,7 @@ http.createServer(function(request, response){
   })
   response.writeHead(200, {"Content-Type": "text/plain"})
   response.end()
-}).listen(config.server_port)
+}).listen(config.server_port, function(){
+  ngrok.connect({authtoken: config.ngrok_token, addr: config.server_port}, function (err, url) {
+  })
+})
