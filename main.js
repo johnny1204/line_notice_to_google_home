@@ -4,9 +4,11 @@ const Client = require('@line/bot-sdk').Client
 
 googlehome.device('Google-Home', 'ja')
 
+const config = require('./config/setting.json');
+
 const client = new Client({
-  channelAccessToken: '***',
-  channelSecret: '***'
+  channelAccessToken: config.access_token,
+  channelSecret: config.client_secret
 })
 
 http.createServer(function(request, response){
@@ -17,7 +19,7 @@ http.createServer(function(request, response){
 
   request.on("end", function() {
     const line = JSON.parse(data).events[0]
-    if(line.type != 'message' || webhook.message.type != 'text') return
+    if(line.type != 'message' || line.message.type != 'text') return
 
     client.getProfile(line.source.userId).then(function(data){
       const message = data.displayName + 'からメッセージです。' + line.message.text
