@@ -5,8 +5,8 @@ const Client = require('@line/bot-sdk').Client
 googlehome.device('Google-Home', 'ja')
 
 const client = new Client({
-  channelAccessToken: 'M9eh2c+B/cDdw4132CloM/pjiu/rS+iKuh/3KD+gr4jMRZ14rL/BHWz/ZCzqVfUgc/r55D5wLwYHGevKDS4Fvs2YuWU1jftvLsL+PNaxTg8JfH7J97N8JZupZivYgXcG9/esyxgfEJv6DCHNlrRaygdB04t89/1O/w1cDnyilFU=',
-  channelSecret: '7500dd278650805cbf9083256878a63c'
+  channelAccessToken: '***',
+  channelSecret: '***'
 })
 
 http.createServer(function(request, response){
@@ -28,4 +28,4 @@ http.createServer(function(request, response){
     response.writeHead(200, {"Content-Type": "text/plain"})
     response.end()
   })
-}).listen(1337, '127.0.0.1')
+}).listen(8080)
