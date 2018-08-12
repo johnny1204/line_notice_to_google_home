@@ -1,10 +1,10 @@
 const googlehome = require('google-home-notifier')
 const http = require('http')
 const Client = require('@line/bot-sdk').Client
+const config = require('./config/setting.json')
 
 googlehome.device('Google-Home', 'ja')
-
-const config = require('./config/setting.json');
+googlehome.ip(config.googlehome_ip)
 
 const client = new Client({
   channelAccessToken: config.access_token,
@@ -30,4 +30,4 @@ http.createServer(function(request, response){
   })
   response.writeHead(200, {"Content-Type": "text/plain"})
   response.end()
-}).listen(8080)
+}).listen(config.server_port)
