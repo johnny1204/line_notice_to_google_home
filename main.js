@@ -16,7 +16,7 @@ const client = new Client({
 function notify(message){
   googlehome.notify(message, function(text) {
     console.log(text)
-  }
+  })
 }
 
 http.createServer(function(request, response){
