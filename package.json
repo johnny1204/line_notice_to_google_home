@@ -11,6 +11,7 @@
   "dependencies": {
     "@line/bot-sdk": "^6.1.0",
     "google-home-notifier": "^1.2.0",
-    "ngrok": "^3.0.1"
+    "ngrok": "^3.0.1",
+    "voicetext": "0.0.7"
   }
 }
