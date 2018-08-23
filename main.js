@@ -28,16 +28,13 @@ http.createServer(function(request, response){
   request.on("end", function() {
     const line = JSON.parse(data).events[0]
     if(line.type != 'message' || line.message.type != 'text') return
+    const user = config.users[line.source.userId]
     console.log(line.source.userId)
-    const user = line.users[line.source.userId]
     if(user){
       const message = user + 'からメッセージです。' + line.message.text
-      if(line.voice_api_key){
-        const voice = new VoiceText(line.voice_api_key)
-        voice.speaker(voice.SPEAKER.HIKARI).speak(notify(message))
-      } else {
-        notify(message)
-      }
+      googlehome.notify(message, function(text) {
+        console.log(text)
+      })
     }
   })
   response.writeHead(200, {"Content-Type": "text/plain"})
