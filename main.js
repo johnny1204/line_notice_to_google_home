@@ -13,12 +13,6 @@ const client = new Client({
   channelSecret: config.client_secret
 })
 
-function notify(message){
-  googlehome.notify(message, function(text) {
-    console.log(text)
-  })
-}
-
 http.createServer(function(request, response){
   let data = ''
   request.on('data', function(chunk){
